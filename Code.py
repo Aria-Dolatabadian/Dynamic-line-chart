@@ -37,8 +37,8 @@ def update(frame):
         lines2.set_data(temperature_data.index[:frame], temperature_data['Region2'][:frame])
         ax.set_xlim(temperature_data.index[0], temperature_data.index[-1])
         ax.set_ylim(
-            temperature_data[['Region1', 'Region2']].min().min(),
-            temperature_data[['Region1', 'Region2']].max().max()
+            min(temperature_data[['Region1', 'Region2']].min().min(), 0),  # Adjusted for negative values
+            max(temperature_data[['Region1', 'Region2']].max().max(), 0)   # Adjusted for negative values
         )
 
         day_of_year = temperature_data.index[frame].strftime("%j")
@@ -54,5 +54,3 @@ animation.save('Temperature_Changes_Animation.gif', writer='imagemagick')
 
 # Display the dynamic line chart
 plt.show()
-
-
