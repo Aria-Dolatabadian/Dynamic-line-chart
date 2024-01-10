@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib.dates import MonthLocator, DateFormatter
 
+
 # Read data from CSV
 temperature_data = pd.read_csv('temperature_data.csv')
 
